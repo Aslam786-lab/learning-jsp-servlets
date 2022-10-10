@@ -1,0 +1,21 @@
+@charset "ISO-8859-1";
+
+.container{
+	margin-left:40%;
+	margin-top: 5%;
+}
+
+form input{
+	display: flex;
+	
+}
+
+button{
+	border-radius:10px;
+	
+}
+
+.register-btn{
+	margin-left: 40%;
+	
+}
