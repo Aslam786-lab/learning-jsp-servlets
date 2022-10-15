@@ -1,7 +1,10 @@
 package com.auth.controller;
 
+import static com.googlecode.objectify.ObjectifyService.ofy;
+
 import java.io.IOException;
-import java.util.List;
+import java.security.MessageDigest;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,69 +12,50 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.bind.DatatypeConverter;
 
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.Entity;
-import com.google.appengine.api.datastore.FetchOptions;
-import com.google.appengine.api.datastore.Query;
-import com.google.appengine.api.datastore.Query.FilterOperator;
-import com.google.appengine.api.datastore.Query.FilterPredicate;
+import com.auth.entities.User;
 
 /**
  * Servlet implementation class RegisterServlet
  */
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
-	
+
+	Logger log = Logger.getLogger("RegisterServlet");
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-
-		
-		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-
-		
-		Entity entity = new Entity("User");
-		
-		
-		
 		String name = request.getParameter("user_name");
+		String email = request.getParameter("user_email");
 		String city = request.getParameter("user_city");
-		String age = request.getParameter("user_age");
+		int age = Integer.parseInt((String)request.getParameter("user_age")) ;
 		String gender = request.getParameter("user_gender");
-		String password = request.getParameter("user_password");
+		String password = getPasswordHash(request.getParameter("user_password"));
 		
-		entity.setProperty("name", name);
-		entity.setProperty("city", city);
-		entity.setProperty("age", age);
-		entity.setProperty("gender", gender);
-		entity.setProperty("password", password);
-		
-		
-		datastore.put(entity);
+		System.out.println("RegisterServlet");
+		User user = new User(name,email,city,age,gender,password);
+		ofy().save().entity(user).now();
+
 		
 		HttpSession session = request.getSession();
 		
 		session.setAttribute("registered", "successfully registered please login");
-		response.sendRedirect(request.getContextPath()+"login.jsp");
+		response.sendRedirect("/user-login");
 
 		
 		
 	}
 	
-	
-	
-	
-	
-	public void checkUserId(String uuid,DatastoreService datastore) {
-		Query query = new Query("User")
-				.setFilter(new FilterPredicate("Key", FilterOperator.EQUAL,uuid ));
-		
-		//storing the query result in list 
-		List<Entity> result=datastore.prepare(query).asList(FetchOptions.Builder.withDefaults());
-		System.out.println(query);	
-		System.out.println(result);
+	public String getPasswordHash(String password) {
+		String hashValue = "";
+		try {
+			MessageDigest md = MessageDigest.getInstance("SHA-256");
+			byte[] hash = md.digest(password.getBytes("UTF-8"));
+			hashValue = DatatypeConverter.printHexBinary(hash);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return hashValue;
 	}
-
 }

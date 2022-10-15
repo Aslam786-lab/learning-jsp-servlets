@@ -25,7 +25,7 @@ if(session.getAttribute("msg") != null){
 </head>
 <body >
 	<div class= "container">
-		<form action="registration.html">
+		<form action="/user-register">
 			<button class= "register-btn">register</button>
 		</form>
 		<h1>Login Please</h1>
@@ -34,9 +34,9 @@ if(session.getAttribute("msg") != null){
 		<h3 style="color: red;"><%= invalidUser %></h3>
 		<h3 style="color: green;"><%= registerUser %></h3>
 		
-		<form  action="LoginServlet" method="post">
-			<label>Username</label>
-			<input name="user_name" type="text">
+		<form  action="login" method="post">
+			<label>Email</label>
+			<input name="user_email" type="email">
 			<br>
 			
 			<label>Password</label>

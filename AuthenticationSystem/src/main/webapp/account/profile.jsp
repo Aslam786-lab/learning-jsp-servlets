@@ -8,15 +8,27 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>profile</title>
 <link rel="stylesheet" href="../resource/css/style.css">
 </head>
 <body>
-	<form action="../LogoutServlet">
-	<button>logout</button>
-	</form>
-	
-	<h1>Welcome <%= name %> you have successfully logged in</h1>
-	<a href="details.jsp">click for details</a>
+	<div class="container">
+		<form action="../logout">
+		<button>logout</button>
+		</form>
+		
+		<form action="/user-details">
+				<button class= "register-btn">details</button>
+		</form>
+		
+		<h1>Welcome <%= name %> you have successfully logged in</h1>
+		
+		<form action="">
+			<input type="text" name="todo_add">
+			<button>add</button>
+		</form>
+		
+	</div>
 </body>
 </html>
+

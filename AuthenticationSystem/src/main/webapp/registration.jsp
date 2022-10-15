@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" isELIgnored="false"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,12 +16,16 @@
 				<input name="user_name" type="text">
 				<br>
 				
+				<label>Email</label>
+				<input name="user_email" type="email">
+				<br>
+				
 				<label>City</label>
 				<input name="user_city" type="text">
 				<br>
 				
 				<label>Age</label>
-				<input name="user_age" type="number">
+				<input name="user_age" type="text">
 				<br>
 				
 				<label>Gender</label>
