@@ -15,9 +15,10 @@ import javax.servlet.http.HttpSession;
 import javax.xml.bind.DatatypeConverter;
 
 import com.auth.entities.User;
+import com.googlecode.objectify.Key;
 
-/**
- * Servlet implementation class RegisterServlet
+/*
+Servlet implementation class RegisterServlet
  */
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
@@ -25,7 +26,7 @@ public class RegisterServlet extends HttpServlet {
 	Logger log = Logger.getLogger("RegisterServlet");
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	
 		String name = request.getParameter("user_name");
 		String email = request.getParameter("user_email");
 		String city = request.getParameter("user_city");
@@ -35,6 +36,7 @@ public class RegisterServlet extends HttpServlet {
 		
 		System.out.println("RegisterServlet");
 		User user = new User(name,email,city,age,gender,password);
+		System.out.println("User key--------"+Key.create(User.class,"user"));
 		ofy().save().entity(user).now();
 
 		

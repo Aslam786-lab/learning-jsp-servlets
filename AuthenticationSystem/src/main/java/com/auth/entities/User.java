@@ -20,6 +20,7 @@ public class User {
 	}
 	
 	public User(String name, String email ,String city, int age, String gender, String password) {
+		
 		this.name = name;
 		this.email = email;
 		this.city = city;
@@ -27,6 +28,8 @@ public class User {
 		this.age = age;
 		this.password = password;
 	}
+	
+
 
 	public String getName() {
 		return name;

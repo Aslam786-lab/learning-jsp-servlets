@@ -23,7 +23,7 @@
 		
 		<h1>Welcome <%= name %> you have successfully logged in</h1>
 		
-		<form action="">
+		<form action="/todo?action=add" method="post">
 			<input type="text" name="todo_add">
 			<button>add</button>
 		</form>

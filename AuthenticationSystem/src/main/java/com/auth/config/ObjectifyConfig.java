@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import com.auth.entities.Todo;
 import com.auth.entities.User;
 import com.googlecode.objectify.ObjectifyService;
 
@@ -15,6 +16,7 @@ public class ObjectifyConfig implements ServletContextListener{
 		// TODO Auto-generated method stub
 		ObjectifyService.init();
         ObjectifyService.register(User.class);
+        ObjectifyService.register(Todo.class);
 	}
 
 	@Override
