@@ -1,12 +1,8 @@
+<%@page import="com.auth.entities.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%
-	String name=(String)session.getAttribute("username");
-	String email=(String)session.getAttribute("email");
-	String city=(String)session.getAttribute("city");
-	int age=(int)session.getAttribute("age");
-	String gender=(String)session.getAttribute("gender");
-
+User user=(User)session.getAttribute("user");
 %>
 <!DOCTYPE html>
 <html>
@@ -16,11 +12,11 @@
 </head>
 
 <body>
-	<h1>Name: <%= name %>.</h1>
-	<h1>Email: <%= email %></h1>
-	<h1>City: <%= city %>.</h1>
-	<h1>Age: <%= age %>.</h1>
-	<h1>Gender: <%= gender %>.</h1>
+	<h1>Name: <%= user.getName() %>.</h1>
+	<h1>Email: <%= user.getEmail() %></h1>
+	<h1>City: <%= user.getCity() %>.</h1>
+	<h1>Age: <%= user.getAge() %>.</h1>
+	<h1>Gender: <%= user.getGender() %>.</h1>
 </body>
 
 </html>

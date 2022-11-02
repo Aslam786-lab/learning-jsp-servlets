@@ -24,7 +24,6 @@ public class LogoutServlet extends HttpServlet {
 		
 		session.invalidate();
 		log.warning("Invalidated session");
-		
 		response.sendRedirect("/user-login");
 	}
 

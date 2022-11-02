@@ -1,11 +1,8 @@
-<%@page import="com.auth.entities.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%
-
-	User user=(User)session.getAttribute("user");
-	out.println(user);
+	String name=(String)session.getAttribute("username");
 %>
 <!DOCTYPE html>
 <html>
@@ -24,7 +21,7 @@
 				<button class= "register-btn">details</button>
 		</form>
 		
-		<h1>Welcome <%= user.getName() %> you have successfully logged in</h1>
+		<h1>Welcome <%= name %> you have successfully logged in</h1>
 		
 		<form action="/todo?action=add" method="post">
 			<input type="text" name="todo_add">

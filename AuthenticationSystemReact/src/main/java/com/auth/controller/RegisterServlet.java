@@ -17,8 +17,8 @@ import javax.xml.bind.DatatypeConverter;
 import com.auth.entities.User;
 import com.googlecode.objectify.Key;
 
-/**
- * Servlet implementation class RegisterServlet
+/*
+Servlet implementation class RegisterServlet
  */
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {

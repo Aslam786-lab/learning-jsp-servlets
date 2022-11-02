@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
 		
 		UserDao dao = new UserDao();
 		List<User> user=dao.emailPasswordAuth(email, password);
-		
+		System.out.println(user);
 		System.out.println(user.size());
 		if(user.size() == 0) {
 			HttpSession s = request.getSession();
@@ -40,16 +40,14 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect("/user-login");
 		}else {
 			HttpSession s= request.getSession();
-			s.setAttribute("user", user);
-			System.out.println(s.getAttribute("user").toString());
-			
-			System.out.println(user);
-			
-//			System.out.println(s);
-//			user.forEach((u)->{
-//				s.setAttribute("user", u);
-//
-//			});
+			user.forEach((u)->{
+				s.setAttribute("username", u.getName());
+				s.setAttribute("email", u.getEmail());
+				s.setAttribute("city", u.getCity());
+				s.setAttribute("age", u.getAge());
+				s.setAttribute("gender", u.getGender());
+				s.setAttribute("password", u.getPassword());
+			});
 			System.out.println("user stored in session");
 			response.sendRedirect("/user-profile");
 		}

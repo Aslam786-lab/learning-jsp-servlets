@@ -20,7 +20,7 @@ public class Servlet2 extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		String name = request.getParameter("user_name");
-	
+		
 		out.println("<h1>hello, "+name+" welcome back to website</h1>");
 			out.println("<h1>Thank You</h1>");
 		

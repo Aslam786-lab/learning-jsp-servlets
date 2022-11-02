@@ -21,9 +21,10 @@ if(session.getAttribute("msg") != null){
 <meta charset="ISO-8859-1">
 <title>Login</title>
 <link rel="stylesheet" href="resource/css/style.css">
-
+<link rel="stylesheet" href="dist/static/css/main.css">
 </head>
 <body >
+	<div id="root"></div>
 	<div class= "container">
 		<form action="/user-register">
 			<button class= "register-btn">register</button>
@@ -41,12 +42,13 @@ if(session.getAttribute("msg") != null){
 			
 			<label>Password</label>
 			<input name="user_password" type="password">
-			<br>
 			<button>login</button>
 		</form>
-		
-	</div>
-	
 
+	</div>
+
+
+<script src="dist/static/js/main.js" type="text/javascript"></script>
+<script src="dist/static/js/chunk.js" type="text/javascript"></script>
 </body>
 </html>

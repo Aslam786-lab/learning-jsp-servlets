@@ -1,13 +1,11 @@
 package com.auth.entities;
 
-import java.io.Serializable;
-
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
 
 @Entity
-public class User implements Serializable {
+public class User {
 	
 	@Id Long id;
 	String name;

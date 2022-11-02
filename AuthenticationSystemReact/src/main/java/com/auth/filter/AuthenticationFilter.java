@@ -14,8 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.auth.entities.User;
-
 /**
  * Servlet Filter implementation class AuthenticationFilter
  */
@@ -28,18 +26,10 @@ public class AuthenticationFilter implements Filter {
 		HttpServletResponse res = (HttpServletResponse) response;
 		
 		HttpSession session = req.getSession(false);
-		
 		String loginURL = "/user-login";
 		log.warning("Authenticating session in AuthenticationFilter");
 	    boolean loggedIn = session != null && session.getAttribute("email") != null;
 	    System.out.println("AuthenticationFilterServlet");
-	    Object obj = session.getAttribute("user");
-	    System.out.println(obj);
-	    System.out.println((User)obj);
-	    System.out.println(session.getAttribute("user"));
-	    
-	    
-	    log.warning("check the session object----------");
 	    System.out.println(loggedIn);
 	    if (loggedIn ) {
 	        chain.doFilter(request, response);
